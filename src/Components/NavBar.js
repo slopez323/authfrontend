@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { getUserToken, logoutUser } from "../Auth";
 
-const NavBar = ({ isAuthLoading, setIsAuthLoading }) => {
+const NavBar = ({ isAuthLoading, setIsAuthLoading, setSecretMessage }) => {
   const [userToken, setUserToken] = useState("");
 
   useEffect(() => {
@@ -37,7 +37,10 @@ const NavBar = ({ isAuthLoading, setIsAuthLoading }) => {
                 onClick={async () => {
                   setIsAuthLoading(true);
                   const logoutSuccess = await logoutUser();
-                  if (logoutSuccess) setIsAuthLoading(false);
+                  if (logoutSuccess) {
+                    setSecretMessage("");
+                    setIsAuthLoading(false);
+                  }
                 }}
               >
                 Logout

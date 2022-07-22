@@ -15,6 +15,7 @@ const LoginPage = ({ isAuthLoading, setIsAuthLoading }) => {
         onChange={(e) => setUsername(e.target.value)}
       />
       <input
+        type="password"
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
       />

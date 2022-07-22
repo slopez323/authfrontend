@@ -10,6 +10,7 @@ import { useState } from "react";
 
 function App() {
   const [isAuthLoading, setIsAuthLoading] = useState(false);
+  const [secretMessage, setSecretMessage] = useState("");
 
   return (
     <div className="App">
@@ -18,12 +19,21 @@ function App() {
           path="/"
           element={
             <NavBar
+              setSecretMessage={setSecretMessage}
               isAuthLoading={isAuthLoading}
               setIsAuthLoading={setIsAuthLoading}
             />
           }
         >
-          <Route index element={<HomePage />} />
+          <Route
+            index
+            element={
+              <HomePage
+                secretMessage={secretMessage}
+                setSecretMessage={setSecretMessage}
+              />
+            }
+          />
           <Route
             path="/login"
             element={
